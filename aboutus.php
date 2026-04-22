@@ -538,23 +538,26 @@ In the modern world, with the amount of problems and their complexity increasing
 <!--    php for calculating visits in site-->
 <?php
 
-     
-     if($_SERVER['REQUEST_METHOD']=="GET"){
-       $localhost = "localhost";
-       $usernamew = "root";
-       $passwordw = "";
-          $db = "expdb";
-      $conn = mysqli_connect($localhost,$usernamew,$passwordw,$db);
-      if(!$conn){
-       echo "Connection error";
-       }
-         else{
-     
-     $sql = "UPDATE counter SET visit=visit+1 WHERE id = 2";
-    $result = mysqli_query($conn,$sql);
- }
+try{
+              if($_SERVER['REQUEST_METHOD']=="GET"){
+                  $localhost = "localhost";
+                  $usernamew = "root";
+                  $passwordw = "";
+                  $db = "expdb";
+                  $conn = mysqli_connect($localhost,$usernamew,$passwordw,$db);
+                  if(!$conn){
+                    echo "Connection error";
+                  } else {
+                      $sql = "UPDATE counter SET visit=visit+1 WHERE id = 2";
+                      $result = mysqli_query($conn,$sql);
+                  }
 
+              }
+} catch {
+  EXCEPTION E=ARGS; 
+  print_r(ARGS);
 }
+    
 
 ?>
 </html>
